@@ -27,8 +27,7 @@ func main() {
 	}
 
 	useTransport, _ := transportFactory.GetTransport(transport)
-	client := demo.NewCalculatorClientFactory(useTransport, protocolFactory)
-	client = demo.NewCalculatorClient(thrift.NewTStandardClient(protocolFactory.GetProtocol(useTransport), protocolFactory.GetProtocol(transport)))
+	client := demo.NewCalculatorClient(thrift.NewTStandardClient(protocolFactory.GetProtocol(useTransport), protocolFactory.GetProtocol(transport)))
 	if err := transport.Open(); err != nil {
 		_, err := fmt.Fprintln(os.Stderr, "Error opening socket to 127.0.0.1:9898", " ", err)
 		if err != nil {
